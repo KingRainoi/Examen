@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  httpserver:
+    image: webdevops/php-apache
+    container_name: server
+    volumes:
+    - ./app:/app/
+
+    ports:
+    - 84:80
+
+  serverdb:
+    image: mariadb:10.7.1
+    container_name: serverdb
+    environment:
+      - MYSQL_ROOT_PASSWORD=B04s10aB71#1506
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./db_config:/etc/mysql/conf.d
+    ports:
+      - 3333:3306
